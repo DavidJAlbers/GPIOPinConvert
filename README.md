@@ -1,7 +1,7 @@
 # GPIO Pin Convert
 GPIOPinConvert is a command line utility for converting Raspberry Pi GPIO pins from the BCM numbering scheme to the wiringPi numbering scheme.
 
-This can come in handy if you are using the wiringPi library (https://www.wiringpi.com) or any other library that depends on it; requiring this special pin numbering.
+This can come in handy if you are using the wiringPi library (http://wiringpi.com) or any other library that depends on it; requiring this special pin numbering.
 
 ## Building GPIOPinConvert
 
