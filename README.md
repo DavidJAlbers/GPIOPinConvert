@@ -10,6 +10,8 @@ GPIOPinConvert is designed to be compiled with Kotlin/Native, but it can also ta
 - `kotlinc-native src/GPIOPinConvert.kt` with a Kotlin/Native compiler on PATH
 - `kotlinc src/GPIOPinConvert.kt` with a Kotlin/JVM compiler on PATH
 
+Pre-built binaries are available under the `v1.0` release.
+
 ## Usage
 
 Call the program output by your compiler (named `gpio-pin-convert` or `program.kexe`, for example) and pass in the BCM pin number you want to convert:
