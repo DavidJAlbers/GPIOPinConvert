@@ -21,7 +21,7 @@ gpio-pin-convert <pin>
 
 ### Example usage
 Calling `gpio-pin-convert 5` gives `GPIO BCM 5 => GPIO wPi 21` as an output, so you know the BCM port 5 maps to the wiring Pi port 21:
-```
-doe@computer:~$ ./gpio-pin-convert 5
+```shell
+> ./gpio-pin-convert 5
 GPIO BCM 5 => GPIO wPi 21
 ```
