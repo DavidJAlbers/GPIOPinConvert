@@ -15,8 +15,8 @@ Pre-built binaries are available under the `v1.0` release.
 ## Usage
 
 Call the program output by your compiler (named `gpio-pin-convert` or `program.kexe`, for example) and pass in the BCM pin number you want to convert:
-```
-gpio-pin-convert <pin>
+```shell
+> gpio-pin-convert <pin>
 ```
 
 ### Example usage
