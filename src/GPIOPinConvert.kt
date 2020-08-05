@@ -1,24 +1,68 @@
 import kotlin.system.exitProcess
 
 fun main(args: Array<String>) {
-    if (args.size != 1) {
-        println("Usage: gpio-pin-convert <pin>")
+    
+    var pinIn: Int?
+    var method: String?
+    var converter: (Int) -> Int?    
+
+    if (args.size == 2 && args[0] == "-r") {
+        pinIn = args[1].toIntOrNull()
+        method = "wPi -> BCM"
+        converter = ::pinConvertReverse
+    } else if (args.size == 1) {
+        pinIn = args[0].toIntOrNull()
+        method = "BCM -> wPi"
+        converter = ::pinConvert
+    } else {
+        println("Usage: gpio-pin-convert [-r] <pin>")
         exitProcess(-1)
     }
 
-    val bcm = args[0].toIntOrNull()
-    if (bcm == null) {
+    if (pinIn == null) {
         println("No pin number given")
         exitProcess(-1)
     }
 
-    val wpi = pinConvert(bcm)
-    if (wpi == null) {
+    val pinOut = converter(pinIn)
+    if (pinOut == null) {
         println("Invalid pin given")
         exitProcess(-1)
     }
 
-    println("GPIO BCM " + bcm + " => GPIO wPi " + wpi)
+    println(method + ": " + pinIn + " -> " + pinOut)
+}
+
+fun pinConvertReverse(wPi: Int) = when (wPi) {
+    8 -> 2
+    9 -> 3
+    7 -> 4
+    0 -> 17
+    2 -> 27
+    3 -> 22
+    12 -> 10
+    13 -> 9
+    14 -> 11
+    30 -> 0
+    21 -> 5
+    22 -> 6
+    23 -> 13
+    24 -> 19
+    25 -> 26
+    15 -> 14
+    16 -> 15
+    1 -> 18
+    4 -> 23
+    5 -> 24
+    6 -> 25
+    10 -> 8
+    11 -> 7
+    31 -> 1
+    26 -> 12
+    27 -> 16
+    28 -> 20
+    29 -> 21
+    else -> null
 }
 
 fun pinConvert(bcm: Int) = when (bcm) {
